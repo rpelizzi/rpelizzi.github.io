@@ -4,30 +4,17 @@
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <p>{{ site.description }}</p>
-  </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
-
-    {% comment %}
-      The code below dynamically generates a sidebar nav of pages with
-      `layout: page` in the front-matter. See readme for usage.
-    {% endcomment %}
-
-    {% assign pages_list = site.pages | sort:"url" %}
-    {% for node in pages_list %}
-      {% if node.title != null %}
-        {% if node.layout == "page" %}
-          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-    <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-    <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+    <a class="sidebar-nav-item{% if page.url == '/' %} active{% endif %}"
+       href="/">Home</a>
+    <a class="sidebar-nav-item{% if page.url == '/bio.html' %} active{% endif %}"
+       href="/bio.html">Bio/CV</a>
+    <a class="sidebar-nav-item{% if page.url == '/research.html' %} active{% endif %}"
+       href="/research.html">Research</a>
+    <a class="sidebar-nav-item{% if page.url == '/publications.html' %} active{% endif %}"
+       href="/publications.html">Publications</a>
+    <a class="sidebar-nav-item" id="contact-email">Contact</a>
   </nav>
 
   <div class="sidebar-item">
