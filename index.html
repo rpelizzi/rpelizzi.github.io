@@ -1,20 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Under construction. Redirects to the ">
-    <meta name="keywords" content="">
-    <meta name="author" content="Riccardo Pelizzi">
-    <meta http-equiv="refresh" content="0; url=https://www3.cs.stonybrook.edu/~rpelizzi/">
-    <title>Under Construction</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    <h1>Under Construction</h1>
+---
+layout: default
+title: Home
+---
 
-    <p>You are being automatically redirected to my old
-    <a href="https://www3.cs.stonybrook.edu/~rpelizzi/">personal page</a>
-    until the new one is complete.</p>
-  
-  </body>
-</html>
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}/{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+
+    {{ post.content }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>
+
